@@ -8,7 +8,6 @@ dotenv.config({ path: '.env' });
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     if (!process.env.JWT_SECRET) {
-        console.warn('JWT_SECRET not found in environment variables, using default value');
     }
     app.useGlobalPipes(new common_1.ValidationPipe({ whitelist: true }));
     await app.listen(3535);

@@ -16,22 +16,16 @@ const AppDataSource = new DataSource({
 async function seed() {
   await AppDataSource.initialize();
   
-  // Drop existing tables if they exist
-  // Let TypeORM handle table creation through synchronize: true
-
   const vehicleTypeRepo = AppDataSource.getRepository(VehicleType);
   const vehicleRepo = AppDataSource.getRepository(Vehicle);
 
-  // Car Types
   const hatchback = vehicleTypeRepo.create({ name: 'Hatchback', category: 'car' });
   const suv = vehicleTypeRepo.create({ name: 'SUV', category: 'car' });
   const sedan = vehicleTypeRepo.create({ name: 'Sedan', category: 'car' });
-  // Bike Type
   const cruiser = vehicleTypeRepo.create({ name: 'Cruiser', category: 'bike' });
 
   await vehicleTypeRepo.save([hatchback, suv, sedan, cruiser]);
 
-  // Vehicles
   await vehicleRepo.save([
     vehicleRepo.create({ name: 'Swift', registrationNumber: 'HB1001', type: hatchback }),
     vehicleRepo.create({ name: 'Baleno', registrationNumber: 'HB1002', type: hatchback }),

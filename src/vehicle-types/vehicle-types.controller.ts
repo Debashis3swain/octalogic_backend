@@ -22,10 +22,8 @@ export class VehicleTypesController {
 
   @Get('rental-options')
   async getRentalOptions() {
-    // Get all categories
     const categories = await this.vehicleTypesService.getCategories();
     
-    // Create a structured response with categories and their types
     const result = {};
     
     for (const category of categories) {

@@ -10,7 +10,7 @@ export class VehicleType {
   name: string;
 
   @Column()
-  category: string; // car or bike
+  category: string; 
 
   @OneToMany(() => Vehicle, (vehicle) => vehicle.type)
   vehicles: Vehicle[];

@@ -10,7 +10,6 @@ export interface ApiResponse {
 }
 
 export const createSuccessResponse = (data: any, id?: number | string): ApiResponse => {
-  // If data is a user object, remove sensitive fields and format with desired order
   const responseData = data && data.password ? {
     id: data.id,
     email: data.email,
@@ -29,8 +28,6 @@ export const createSuccessResponse = (data: any, id?: number | string): ApiRespo
 
 export const createErrorResponse = (error: any, id?: number | string): ApiResponse => {
   let errorMessage = error.message || 'An error occurred';
-  
-  // Handle specific error cases
   if (error.code === '23505') {
     errorMessage = 'Email already exists';
   } else if (error.code === '23503') {

@@ -58,10 +58,7 @@ export class VehiclesService {
       const overlappingBookings = await this.bookingRepository.count({
         where: {
           vehicle: { id: vehicle.id },
-          status: 'confirmed', // Only consider confirmed bookings
-          // Check for date range overlap
-          // Either booking starts during requested period or ends during requested period
-          // or completely encompasses the requested period
+          status: 'confirmed', 
           startDate: LessThanOrEqual(endDate),
           endDate: MoreThanOrEqual(startDate)
         }

@@ -40,19 +40,16 @@ export class VehiclesController {
     }
 
     try {
-      // If typeId is provided, search based on that
       if (typeId) {
         const vehicles = await this.vehiclesService.findAvailableVehiclesByType(parseInt(typeId), startDate, endDate);
         return { vehicles };
       }
       
-      // If category is provided, search by category
       if (category) {
         const vehicles = await this.vehiclesService.findAvailableVehiclesByCategory(category, startDate, endDate);
         return { vehicles };
       }
       
-      // If neither is provided, return empty result
       return { vehicles: [], message: 'Please provide either category or typeId to search' };
     } catch (error) {
       return { 

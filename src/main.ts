@@ -8,9 +8,7 @@ dotenv.config({ path: '.env' });
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   
-  // Ensure environment variables are available
   if (!process.env.JWT_SECRET) {
-    console.warn('JWT_SECRET not found in environment variables, using default value');
   }
   
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));

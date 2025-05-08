@@ -7,13 +7,13 @@ const registerSchema = Joi.object({
   email: Joi.string().email().required(),
   password: Joi.string().min(6).required(),
   name: Joi.string().min(2).required(),
-  phoneNumber: Joi.string().length(10).pattern(/^[0-9]+$/).required() // Required phone number with 10 digits
+  phoneNumber: Joi.string().length(10).pattern(/^[0-9]+$/).required() 
 });
 
 const loginSchema = Joi.object({
   email: Joi.string().email().required(),
   password: Joi.string().required(),
-  phoneNumber: Joi.string().optional() // Optional phone number field
+  phoneNumber: Joi.string().optional() 
 });
 
 @Controller('auth')

@@ -51,14 +51,13 @@ export class BookingsService {
         name,
         email,
         phoneNumber: phoneNumber || '',
-        password: '', // Empty password for now, user would need to set it if they want to log in
+        password: '', 
       });
       await this.userRepository.save(user);
     } else {
-      // Update the existing user's information if they already exist
-      user.name = name; // Update name if it changed
+      user.name = name; 
       if (phoneNumber) {
-        user.phoneNumber = phoneNumber; // Update phone if provided
+        user.phoneNumber = phoneNumber; 
       }
       await this.userRepository.save(user);
     }
